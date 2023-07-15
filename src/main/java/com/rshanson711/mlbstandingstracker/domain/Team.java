@@ -13,7 +13,8 @@ public class Team {
     @JsonProperty("link")
     private String link;
 
-    //private Division division;
+    @JsonProperty("division")
+    private Division division;
 
     public Team () {};
 
@@ -41,11 +42,12 @@ public class Team {
         this.link = link;
     }
 
-//    public Division getDivision() {
-//        return division;
-//    }
-//
-//    public void setDivision(Division division) {
-//        this.division = division;
-//    }
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
 }

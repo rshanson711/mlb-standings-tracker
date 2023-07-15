@@ -1,15 +1,13 @@
 package com.rshanson711.mlbstandingstracker.domain;
 
-public enum Division {
-    NATIONAL_LEAGUE_CENTRAL ("NL Central");
-
-    private String name;
-
+public class Division {
     private int id;
+    private String name;
 
     private Division(String name) {
         this.name = name;
     }
+    private Division() {};
 
     public String getName() {
         return name;

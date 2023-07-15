@@ -13,8 +13,14 @@ public class WebController {
     private MlbApiService mlbApiService;
 
     @GetMapping("/")
-    public String home(@RequestParam(value = "team", defaultValue = "112") int team, Model model) {
-        model.addAttribute("team", mlbApiService.getTeamName(team));
+    public String home(@RequestParam(value = "leagueId", defaultValue = "104") int leagueId, @RequestParam(value = "divisionId", defaultValue = "205") int divisionId, Model model) {
+        model.addAttribute("team", mlbApiService.getDivisionLeader(leagueId, divisionId));
         return "home";
+    }
+
+    @GetMapping("/standings/nlcentral")
+    public String nlCentral() {
+        mlbApiService.getDivisionStandings();
+        return "standings";
     }
 }
