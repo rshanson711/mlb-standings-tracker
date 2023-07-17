@@ -8,6 +8,7 @@ public class TeamRecord {
     private String wildCardGamesBack;
     private int wins;
     private int losses;
+    private String winningPercentage;
 
     public Team getTeam() {
         return team;
@@ -63,5 +64,13 @@ public class TeamRecord {
 
     public void setLosses(int losses) {
         this.losses = losses;
+    }
+
+    public String getWinningPercentage() {
+        return winningPercentage;
+    }
+
+    public void setWinningPercentage(String winningPercentage) {
+        this.winningPercentage = winningPercentage;
     }
 }

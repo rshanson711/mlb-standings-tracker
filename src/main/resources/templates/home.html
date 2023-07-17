@@ -6,6 +6,63 @@
     <title>MLB Divisions Tracker</title>
 </head>
 <body>
-    <h1 th:text="${team}"></h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h2 th:text="${alLeader}"></h2>
+            </div>
+            <div class="col-md-6 text-center">
+                <h2 th:text="${nlLeader}"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <tr>
+                        <th>AL East</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>Pct.</th>
+                        <th>GB</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${alDivisionalStandingsTeams[0]}"></td>
+                        <td th:text="${alDivisionalStandingsWins[0]}"></td>
+                        <td th:text="${alDivisionalStandingsLosses[0]}"></td>
+                        <td th:text="${alDivisionalStandingsWinPercentages[0]}"></td>
+                        <td th:text="${alDivisionalStandingsGamesBehind[0]}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${alDivisionalStandingsTeams[1]}"></td>
+                        <td th:text="${alDivisionalStandingsWins[1]}"></td>
+                        <td th:text="${alDivisionalStandingsLosses[1]}"></td>
+                        <td th:text="${alDivisionalStandingsWinPercentages[1]}"></td>
+                        <td th:text="${alDivisionalStandingsGamesBehind[1]}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${alDivisionalStandingsTeams[2]}"></td>
+                        <td th:text="${alDivisionalStandingsWins[2]}"></td>
+                        <td th:text="${alDivisionalStandingsLosses[2]}"></td>
+                        <td th:text="${alDivisionalStandingsWinPercentages[2]}"></td>
+                        <td th:text="${alDivisionalStandingsGamesBehind[2]}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${alDivisionalStandingsTeams[3]}"></td>
+                        <td th:text="${alDivisionalStandingsWins[3]}"></td>
+                        <td th:text="${alDivisionalStandingsLosses[3]}"></td>
+                        <td th:text="${alDivisionalStandingsWinPercentages[3]}"></td>
+                        <td th:text="${alDivisionalStandingsGamesBehind[3]}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="${alDivisionalStandingsTeams[4]}"></td>
+                        <td th:text="${alDivisionalStandingsWins[4]}"></td>
+                        <td th:text="${alDivisionalStandingsLosses[4]}"></td>
+                        <td th:text="${alDivisionalStandingsWinPercentages[4]}"></td>
+                        <td th:text="${alDivisionalStandingsGamesBehind[4]}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
