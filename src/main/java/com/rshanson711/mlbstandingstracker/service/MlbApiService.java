@@ -1,8 +1,6 @@
 package com.rshanson711.mlbstandingstracker.service;
 
-import com.rshanson711.mlbstandingstracker.domain.MlbApiResponse;
-import com.rshanson711.mlbstandingstracker.domain.Team;
-import com.rshanson711.mlbstandingstracker.domain.TeamRecord;
+import com.rshanson711.mlbstandingstracker.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -114,5 +112,23 @@ public class MlbApiService {
         }
 
         return output;
+    }
+
+//    public List<TeamRecord> getDivisionalStandings(int leagueId, DivisionEnum divisionEnum) {
+//        MlbApiResponse response = webClient.get().uri("https://statsapi.mlb.com/api/v1/standings?leagueId=" + leagueId).retrieve().bodyToMono(MlbApiResponse.class).block();
+//        return switch (divisionEnum) {
+//            case AL_EAST, NL_EAST -> response.getRecords().get(0).getTeamRecords();
+//            case AL_CENTRAL, NL_CENTRAL -> response.getRecords().get(1).getTeamRecords();
+//            case AL_WEST, NL_WEST -> response.getRecords().get(2).getTeamRecords();
+//        };
+//    }
+
+    public DivisionStanding getDivisionalStandings(int leagueId, DivisionEnum divisionEnum) {
+        MlbApiResponse response = webClient.get().uri("https://statsapi.mlb.com/api/v1/standings?leagueId=" + leagueId).retrieve().bodyToMono(MlbApiResponse.class).block();
+        return switch (divisionEnum) {
+            case AL_EAST, NL_EAST -> new DivisionStanding(divisionEnum.getName(), response.getRecords().get(0).getTeamRecords());
+            case AL_CENTRAL, NL_CENTRAL -> new DivisionStanding(divisionEnum.getName(), response.getRecords().get(1).getTeamRecords());
+            case AL_WEST, NL_WEST -> new DivisionStanding(divisionEnum.getName(), response.getRecords().get(2).getTeamRecords());
+        };
     }
 }

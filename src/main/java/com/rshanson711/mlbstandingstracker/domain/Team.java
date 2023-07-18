@@ -5,15 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Team {
-    @JsonProperty("id")
     private int id;
-    @JsonProperty("name")
     private String name;
-
-    @JsonProperty("link")
     private String link;
-
-    @JsonProperty("division")
     private Division division;
 
     public Team () {};

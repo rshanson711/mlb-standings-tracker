@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.0/css/bootstrap.css">
     <title>MLB Divisions Tracker</title>
 </head>
@@ -17,48 +18,38 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <table class="table">
+                <table class="table w-50" th:each="divisionStanding : ${alDivisionStandings}">
                     <tr>
-                        <th>AL East</th>
-                        <th>W</th>
-                        <th>L</th>
-                        <th>Pct.</th>
-                        <th>GB</th>
+                        <th class="w-25" th:text="${divisionStanding.name}"></th>
+                        <th class="w-10">W</th>
+                        <th class="w-10">L</th>
+                        <th class="w-10">Pct.</th>
+                        <th class="w-10">GB</th>
                     </tr>
-                    <tr>
-                        <td th:text="${alDivisionalStandingsTeams[0]}"></td>
-                        <td th:text="${alDivisionalStandingsWins[0]}"></td>
-                        <td th:text="${alDivisionalStandingsLosses[0]}"></td>
-                        <td th:text="${alDivisionalStandingsWinPercentages[0]}"></td>
-                        <td th:text="${alDivisionalStandingsGamesBehind[0]}"></td>
+                    <tr th:each="teamRecord : ${divisionStanding.teams}">
+                        <td th:text="${teamRecord.team.name}"></td>
+                        <td th:text="${teamRecord.wins}"></td>
+                        <td th:text="${teamRecord.losses}"></td>
+                        <td th:text="${teamRecord.winningPercentage}"></td>
+                        <td th:text="${teamRecord.gamesBack}"></td>
                     </tr>
+                </table>
+            </div>
+            <div class="col-md-6 d-flex flex-column align-items-end">
+                <table class="table w-50" th:each="divisionStanding : ${nlDivisionStandings}">
                     <tr>
-                        <td th:text="${alDivisionalStandingsTeams[1]}"></td>
-                        <td th:text="${alDivisionalStandingsWins[1]}"></td>
-                        <td th:text="${alDivisionalStandingsLosses[1]}"></td>
-                        <td th:text="${alDivisionalStandingsWinPercentages[1]}"></td>
-                        <td th:text="${alDivisionalStandingsGamesBehind[1]}"></td>
+                        <th style="width: 20%;" th:text="${divisionStanding.name}"></th>
+                        <th class="w-10">W</th>
+                        <th class="w-10">L</th>
+                        <th class="w-10">Pct.</th>
+                        <th class="w-10">GB</th>
                     </tr>
-                    <tr>
-                        <td th:text="${alDivisionalStandingsTeams[2]}"></td>
-                        <td th:text="${alDivisionalStandingsWins[2]}"></td>
-                        <td th:text="${alDivisionalStandingsLosses[2]}"></td>
-                        <td th:text="${alDivisionalStandingsWinPercentages[2]}"></td>
-                        <td th:text="${alDivisionalStandingsGamesBehind[2]}"></td>
-                    </tr>
-                    <tr>
-                        <td th:text="${alDivisionalStandingsTeams[3]}"></td>
-                        <td th:text="${alDivisionalStandingsWins[3]}"></td>
-                        <td th:text="${alDivisionalStandingsLosses[3]}"></td>
-                        <td th:text="${alDivisionalStandingsWinPercentages[3]}"></td>
-                        <td th:text="${alDivisionalStandingsGamesBehind[3]}"></td>
-                    </tr>
-                    <tr>
-                        <td th:text="${alDivisionalStandingsTeams[4]}"></td>
-                        <td th:text="${alDivisionalStandingsWins[4]}"></td>
-                        <td th:text="${alDivisionalStandingsLosses[4]}"></td>
-                        <td th:text="${alDivisionalStandingsWinPercentages[4]}"></td>
-                        <td th:text="${alDivisionalStandingsGamesBehind[4]}"></td>
+                    <tr th:each="teamRecord : ${divisionStanding.teams}">
+                        <td th:text="${teamRecord.team.name}"></td>
+                        <td th:text="${teamRecord.wins}"></td>
+                        <td th:text="${teamRecord.losses}"></td>
+                        <td th:text="${teamRecord.winningPercentage}"></td>
+                        <td th:text="${teamRecord.gamesBack}"></td>
                     </tr>
                 </table>
             </div>
