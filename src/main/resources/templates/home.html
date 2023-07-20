@@ -18,8 +18,9 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <table class="table w-50" th:each="divisionStanding : ${alDivisionStandings}">
+                <table style="width: 55%;" class="table" th:each="divisionStanding : ${alDivisionStandings}">
                     <tr>
+                        <th class="w-10"></th>
                         <th class="w-25" th:text="${divisionStanding.name}"></th>
                         <th class="w-10">W</th>
                         <th class="w-10">L</th>
@@ -27,6 +28,7 @@
                         <th class="w-10">GB</th>
                     </tr>
                     <tr th:each="teamRecord : ${divisionStanding.teams}">
+                        <td><img src="/images/arizona_diamondbacks_logo_primary_20123733.png" style="width: 40px; height: auto;"></td>
                         <td th:text="${teamRecord.team.name}"></td>
                         <td th:text="${teamRecord.wins}"></td>
                         <td th:text="${teamRecord.losses}"></td>
