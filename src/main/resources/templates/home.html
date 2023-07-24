@@ -28,7 +28,8 @@
                         <th class="w-10">GB</th>
                     </tr>
                     <tr th:each="teamRecord : ${divisionStanding.teams}">
-                        <td><img src="/images/arizona_diamondbacks_logo_primary_20123733.png" style="width: 40px; height: auto;"></td>
+<!--                        <td><img th:src="/images/${teamRecord.team.fileCode}_primary.png" style="width: 40px; height: auto;"></td>-->
+                        <td><img th:src="'/images/' + ${teamRecord.team.id} + '/primary.png'" style="width: 40px; height: auto;"></td>
                         <td th:text="${teamRecord.team.name}"></td>
                         <td th:text="${teamRecord.wins}"></td>
                         <td th:text="${teamRecord.losses}"></td>
@@ -47,6 +48,7 @@
                         <th class="w-10">GB</th>
                     </tr>
                     <tr th:each="teamRecord : ${divisionStanding.teams}">
+                        <td><img th:src="'/images/' + ${teamRecord.team.id} + '/primary.png'" style="width: 40px; height: auto;"></td>
                         <td th:text="${teamRecord.team.name}"></td>
                         <td th:text="${teamRecord.wins}"></td>
                         <td th:text="${teamRecord.losses}"></td>

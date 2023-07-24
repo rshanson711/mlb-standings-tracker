@@ -9,6 +9,8 @@ public class Team {
     private String name;
     private String link;
     private Division division;
+    private String fileCode;
+    private String abbreviation;
 
     public Team () {};
 
@@ -44,4 +46,19 @@ public class Team {
         this.division = division;
     }
 
+    public String getFileCode() {
+        return fileCode;
+    }
+
+    public void setFileCode(String fileCode) {
+        this.fileCode = fileCode;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
 }
