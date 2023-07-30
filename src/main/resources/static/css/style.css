@@ -9,3 +9,14 @@
 .background-red {
     background-color: red;
 }
+
+.logo-wrapper {
+    height: 40px;
+    width: 40px;
+}
+
+.standings-col:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
