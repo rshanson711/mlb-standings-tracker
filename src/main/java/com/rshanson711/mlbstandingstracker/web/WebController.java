@@ -19,7 +19,7 @@ public class WebController {
     @Autowired
     private MlbApiService mlbApiService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<List<DivisionStanding>> home(@RequestParam(value = "leagueId", defaultValue = "104") int leagueId, @RequestParam(value = "divisionId", defaultValue = "205") int divisionId, Model model) {
         String[] leagueLeaders = mlbApiService.getLeagueLeaders();
         List<DivisionStanding> alDivisionStandings = new ArrayList<>();
