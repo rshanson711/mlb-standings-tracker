@@ -5,7 +5,7 @@ import { createSignal } from 'solid-js';
 const [name, setName] = createSignal('Test');
 
 async function test() {
-  const response = await(fetch('http://localhost:8080/api/', {
+  const response = await(fetch('/api/', {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -17,8 +17,6 @@ async function test() {
   console.log(body);
   console.log(body.body);
   setName(body.body);
-
-  // setName(response);
 }
 
 function App() {
