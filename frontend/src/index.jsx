@@ -2,8 +2,7 @@
 import { render } from 'solid-js/web';
 
 import './index.css';
-import App from './App';
-import Home from './Home';
+import Home from './components/Home';
 
 const root = document.getElementById('root');
 

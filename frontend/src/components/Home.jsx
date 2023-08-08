@@ -1,8 +1,9 @@
 import { For, onMount} from "solid-js";
 import { createStore } from "solid-js/store"
-import styles from "./Home.module.css"
+import { Table } from "solid-bootstrap"
+import styles from "../css/Home.module.css"
 import axios from "axios";
-import logo from "./assets/images/109/primary.png"
+import TeamRecord from "./TeamRecord";
 
 const [leagueDivisionStandings, setLeagueDivisionStandings] = createStore([]);
 const addLeagueDivisionStanding = (leagueDivisionStanding => {
@@ -35,8 +36,8 @@ function Home() {
                 <For each={leagueDivisionStandings}>{(leagueDivisionStanding) =>
                     <div class="col-md-6 standings-col">
                     <For each={leagueDivisionStanding}>{(divisionStanding) =>
-                        <table class="table" style="width: 55%">
-                            <tbody>
+                        <Table bordered hover style="width: 55%">
+                            <thead>
                                 <tr>
                                     <th class="w-10"></th>
                                     <th class="w-25">{divisionStanding.name}</th>
@@ -45,23 +46,14 @@ function Home() {
                                     <th class="w-10">Pct.</th>
                                     <th class="w-10">GB</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <For each={divisionStanding.teams}>{(teamRecord) =>
-                                    <tr>
-                                        <td>
-                                            <div class={styles.logoWrapper}>
-                                                <img src='/assets/images/109/primary.png' style="height: 100%; width: 100%; object-fit: contain;"/>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle">{teamRecord.team.name}</td>
-                                        <td class="align-middle">{teamRecord.wins}</td>
-                                        <td class="align-middle">{teamRecord.losses}</td>
-                                        <td class="align-middle">{teamRecord.winningPercentage}</td>
-                                        <td class="align-middle">{teamRecord.gamesBack}</td>
-                                    </tr>
+                                    <TeamRecord teamRecord={teamRecord} teamId={teamRecord.team.id}/>
                                 }
                                 </For>
                             </tbody>
-                        </table>
+                        </Table>
                     }   
                     </For>
                     </div> 
