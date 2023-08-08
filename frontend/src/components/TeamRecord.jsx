@@ -8,9 +8,9 @@ export default function TeamRecord(props) {
 
     return (
         <tr>
-            <td>
+            <td style="text-align: center;">
                 <div class={styles.logoWrapper}>
-                    <img src={img.src} style="height: 100%; width: 100%; object-fit: contain;"/>
+                    <img src={img.src} class={styles.logo}/>
                 </div>
             </td>
             <td class="align-middle">{props.teamRecord.team.name}</td>
