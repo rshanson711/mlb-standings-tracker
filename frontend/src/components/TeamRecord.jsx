@@ -7,7 +7,7 @@ export default function TeamRecord(props) {
     });
 
     return (
-        <tr>
+        <tr onClick={props.onClick}>
             <td style="text-align: center;">
                 <div class={styles.logoWrapper}>
                     <img src={img.src} class={styles.logo}/>
