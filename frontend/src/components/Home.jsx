@@ -41,7 +41,7 @@ function Home() {
                             <Accordion.Body class="container-fluid">
                                 <div class="row">
                                     <div class="col-6">
-                                        <Table bordered hover style="">
+                                        <Table bordered hover>
                                             <thead>
                                                 <tr>
                                                     <th class="w-10"></th>
@@ -62,7 +62,7 @@ function Home() {
                                     </div>
                                     <div class="col-6">
                                         <Show when={teamSelected() != null}>
-                                            <TeamCard teamId={teamSelected()}>
+                                            <TeamCard team={teamSelected()}>
 
                                             </TeamCard>
                                         </Show>

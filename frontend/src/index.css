@@ -21,3 +21,8 @@ code {
   flex-direction: column;
   align-items: end;
 }
+
+.accordion-col-6 {
+  height: 100%;
+  width: 100%;
+}

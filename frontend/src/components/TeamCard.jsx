@@ -1,16 +1,13 @@
 import { Card } from "solid-bootstrap";
-import { createStore } from "solid-js/store";
+import { createSignal } from "solid-js";
+import styles from "../css/TeamCard.module.css"
 
 function TeamCard(props) {
-    const [img, setImg] = createStore({
-        src: "../src/assets/images/" + props.teamId + "/primary.png"
-    });
-
     return (
-        <Card>
-            <Card.Img variant='top'></Card.Img>
+        <Card class={styles.card}>
+            <Card.Img variant='top' src={"../src/assets/images/" + props.team.id + "/primary.png"} class={styles.cardImage}></Card.Img>
             <Card.Body>
-
+                <h2>{props.team.name}</h2>
             </Card.Body>
         </Card>
     )
