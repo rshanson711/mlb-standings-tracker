@@ -4,8 +4,12 @@ import styles from "../css/TeamCard.module.css"
 
 function TeamCard(props) {
     return (
-        <Card class={styles.card}>
-            <Card.Img variant='top' src={"../src/assets/images/" + props.team.id + "/primary.png"} class={styles.cardImage}></Card.Img>
+        <Card class="mh-50" style="height: 377px;">
+            <div class={styles.cardVideoWrapper}>
+                <video class={styles.cardVideo} controls="controls">
+                    <source src=""></source>
+                </video>
+            </div>
             <Card.Body>
                 <h2>{props.team.name}</h2>
             </Card.Body>
