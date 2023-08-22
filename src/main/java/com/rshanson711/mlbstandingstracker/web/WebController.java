@@ -1,5 +1,6 @@
 package com.rshanson711.mlbstandingstracker.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rshanson711.mlbstandingstracker.domain.ApiResponse;
 import com.rshanson711.mlbstandingstracker.domain.DivisionEnum;
 import com.rshanson711.mlbstandingstracker.domain.DivisionStanding;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -59,5 +62,10 @@ public class WebController {
     public String nlCentral() {
         mlbApiService.getDivisionStandings();
         return "standings";
+    }
+
+    @GetMapping("/highlights/{teamId}")
+    public String getHighlight(@PathVariable int teamId) throws IOException, URISyntaxException {
+        return mlbApiService.getLastGameHighlightVideo(teamId);
     }
 }

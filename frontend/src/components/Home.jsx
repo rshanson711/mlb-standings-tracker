@@ -13,6 +13,8 @@ const addLeagueDivisionStanding = (leagueDivisionStanding => {
 });
 const [alTeamSelected, setAlTeamSelected] = createSignal();
 const [nlTeamSelected, setNlTeamSelected] = createSignal();
+const [alHighlightURL, setAlHighlightURL] = createSignal();
+const [nlHighlightURL, setNlHighlightURL] = createSignal();
 
 onMount(async () => {
     const request = await axios.get("/api").then(response => {
@@ -20,14 +22,33 @@ onMount(async () => {
             addLeagueDivisionStanding(e);
         });
     })
+
+    
 });
 
 const teamCardClickHandler = (team, index) => {
     if (index == 0) {
+        setAlHighlightURL(null);
         setAlTeamSelected(team);
     } else {
+        setNlHighlightURL(null);
         setNlTeamSelected(team);
     }
+
+    if (team !== null) {
+        loadHighlight(team.id, index);
+    }
+}
+
+async function loadHighlight(teamId, index) {
+    await axios.get("/api/highlights/" + teamId).then(response => {
+        if (index == 0) {
+            setAlHighlightURL(response.data);
+        } else {
+            setNlHighlightURL(response.data);
+        }
+        console.log(response.data);
+    })
 }
 
 function Home() {
@@ -71,14 +92,10 @@ function Home() {
                                         </div>
                                         <div class="col-6">
                                             <Show when={alTeamSelected() != null && leagueIndex() == 0}>
-                                                <TeamCard team={alTeamSelected()}>
-
-                                                </TeamCard>
+                                                <TeamCard team={alTeamSelected()} videoURL={alHighlightURL()}></TeamCard>
                                             </Show>
                                             <Show when={nlTeamSelected() != null && leagueIndex() == 1}>
-                                                <TeamCard team={nlTeamSelected()}>
-
-                                                </TeamCard>
+                                                <TeamCard team={nlTeamSelected()} videoURL={nlHighlightURL()}></TeamCard>
                                             </Show>
                                         </div>
                                     </div>

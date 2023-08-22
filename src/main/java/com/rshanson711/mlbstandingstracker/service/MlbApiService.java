@@ -1,10 +1,18 @@
 package com.rshanson711.mlbstandingstracker.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rshanson711.mlbstandingstracker.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class MlbApiService {
@@ -130,5 +138,24 @@ public class MlbApiService {
             case AL_CENTRAL, NL_CENTRAL -> new DivisionStanding(divisionEnum.getName(), response.getRecords().get(1).getTeamRecords());
             case AL_WEST, NL_WEST -> new DivisionStanding(divisionEnum.getName(), response.getRecords().get(2).getTeamRecords());
         };
+    }
+
+    public String getLastGamePk(int teamId) throws IOException, URISyntaxException {
+        ObjectMapper mapper = new ObjectMapper();
+        URI uri = new URI("https://statsapi.mlb.com/api/v1/teams/" + teamId + "?hydrate=previousSchedule");
+
+
+        JsonNode dates = mapper.readTree(uri.toURL()).get("teams").get(0).get("previousGameSchedule").get("dates"); // GET SET OF DATES WHERE THEY LAST PLAYED (IN ASC ORDER) (ACCOUNTS FOR WEIRD MULTI GAME DAYS)
+        JsonNode games = dates.get(dates.size() - 1).get("games"); // GET GAMES ON LAST DATE
+        return games.get(games.size() - 1).get("gamePk").asText(); // RETURN FINAL GAME ON LAST DATE (ACCOUNTS FOR DOUBLEHEADERS, ETC)
+    }
+
+    public String getLastGameHighlightVideo(int teamId) throws IOException, URISyntaxException {
+        String gamePk = getLastGamePk(teamId);
+        ObjectMapper mapper = new ObjectMapper();
+        URI uri = new URI("https://statsapi.mlb.com/api/v1/game/" + gamePk + "/content");
+
+        JsonNode highlights = mapper.readTree(uri.toURL()).get("highlights").get("highlights").get("items"); // GET HIGHLIGHT ITEMS
+        return highlights.get(0).get("playbacks").get(0).get("url").asText(); // GET URL OF FIRST HIGHLIGHT
     }
 }

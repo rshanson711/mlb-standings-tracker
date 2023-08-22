@@ -1,6 +1,5 @@
 # mlb-standings-tracker
-MLB Divisional Standings Tracker is an app to track the standings of the six MLB divisions throughout the season.
-
+MLB Divisional Standings Tracker is an app to track the standings of the six MLB divisions throughout the season. This is purely a personal project for education and fun!
 
 Credit to toddrob99 for the repository here making it easy to interact with MLB-StatsAPI.
 https://github.com/toddrob99/MLB-StatsAPI

@@ -4,6 +4,8 @@
 
 .cardVideoWrapper {
     height: 50%;
+    padding-top: 6px;
+    padding-left: 6px;
 }
 
 .cardVideo {
